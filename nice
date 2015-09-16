@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script> >
+    <script src="https://cdn.firebase.com/js/client/2.2.9/firebase.js"></script>
+
+
+    <title></title>
+</head>
+<body>
+<div>
+    <button id="save" value="Saveme">saveme</button>
+
+</div>
+<script>
+    $(document).ready(function(){
+
+        $("#save").click(function(){
+
+            var me = openFrom();
+            document.write(me.121\:12:103:100);
+
+
+        })
+
+        $("open").click(function(){
+           console.log(openFrom());
+        })
+
+    })
+    var refol = new Firebase("https://test232.firebaseio.com/");
+    var d = new Date();
+    var  s = d.toUTCString();
+    console.log(s);
+
+
+    function saveFromDraft() {
+        refol.once("value", function (snapshot) {
+            var newrefol = refol.child("goal")
+            newrefol.push(snapshot.val());
+        })
+        return;
+    }
+
+
+    function openFrom(){
+        var arr = [];
+        refol.on("value", function(snapshot){
+          arr.push(snapshot.val());
+
+        });
+
+        return arr[0];
+    }
+
+</script>
+
+
+</body>
+</html>
