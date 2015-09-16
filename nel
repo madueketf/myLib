@@ -1,0 +1,52 @@
+/**
+ * Created by Thankgod on 9/16/2015.
+ */
+//Prepare the document for
+$(document).ready(function(){
+    //all needed variable declared here
+    var refol = new Firebase("https://test232.firebaseio.com/save");
+    var d = new Date();
+    var  s = d.toUTCString();
+    // call saveFromDraf function on #save click
+    $("#save").click(function(){
+        saveFromDraft();
+    })
+
+    // call openFrom function on #open click
+    $("open").click(function(){
+        openFrom();
+    })
+
+    //snap the draming Xs and Ys cordinate and save it to saved folder
+    function saveFromDraft() {
+        refol.once("value", function (snapshot) {
+            refol.child(s).push(snapshot.val());
+        })
+
+    }
+    
+
+//op
+    function openFrom(){
+        var refolsaved = refol.child("saved")
+        refolsaved.on("value", function(snapshot){
+
+            ref.once(snapshot.val());
+        })
+    }
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
